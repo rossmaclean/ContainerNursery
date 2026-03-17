@@ -2,8 +2,11 @@ FROM node:17-alpine
 
 WORKDIR /usr/src/app
 COPY package*.json ./
-RUN npm install --only=production
+RUN npm ci
 
-COPY . .
+COPY build/ ./build/
+COPY views/ ./views/
+
+COPY config/config.yml.example ./config/config.yml.example
 EXPOSE 80
 CMD ["node", "build/index.js"]
