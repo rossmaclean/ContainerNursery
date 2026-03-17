@@ -1,0 +1,19 @@
+services:
+  container-nursery:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    container_name: test-container-nursery
+    volumes:
+      - "./test/integration/config.yml:/usr/src/app/config/config.yml:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    environment:
+      - CN_LOG_LEVEL=debug
+    ports:
+      - 80:80
+    depends_on:
+      - nginx
+  
+  nginx:
+    image: nginx:alpine
+    container_name: test-nginx

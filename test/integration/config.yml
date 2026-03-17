@@ -1,0 +1,8 @@
+proxyListeningPort: 80
+proxyHosts:
+  - domain: test.example.com
+    containerName: test-nginx
+    proxyHost: test-nginx
+    proxyPort: 80
+    timeoutSeconds: 10
+    displayName: Test Nginx
